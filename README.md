@@ -1,64 +1,42 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+    		How to install vue3, vue-router 4 on laravel Project, setup a admin template and load components through vue-router
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+1.  Install fresh Laravel project.
 
-## About Laravel
+2.  run 'npm install' -> will create node_modules file, need it because it install package and Libraries for js development.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+3.  Now need to install vue-router along with few package---
+    --> npm install vue@next vue-loader@next vue-router@next @vue/compiler-sfc babel-loader @babel/core
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+4.  run 'npm run dev' it will create css & js folder with app.css & app.js file under Public directory,
+    we have to link-up this two file with our main view file - for example -> with welcome.blade.php file
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+        --------Now we are ready to go work with Vue3 with Laravel--------
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+        	Now we will setup a dashboard template in our project and will create component & will load them throgh vue-router4
 
-## Laravel Sponsors
+5.  Replace welcome.blade.php file with our favourite admin template's index.html file.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+6.  Copy all css/js/vendor/img from admin template and put them inside public->backend folder, then link all of them with welcome.blade.php file.
 
-### Premium Partners
+7.  Now we will work on vue component, we will do all of our vue things in resources->js folder.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+8.  In app.js file we will create our vue app and mount it.
 
-## Contributing
+9.  we will create index.js file under router folder and have to link in app.js file.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+10. In index.js file we will create router objects/instance and all routes and will configure them.
 
-## Code of Conduct
+11. we will create all of our components under components folder and will import all component in index.js file.
+12. We have to wrap our welcome.blade.php/ specific html file with id = "#app"
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+13. Then we have to use router-view tag where we want to load our component.
+    10.In webpack.mix.js file we have to add .vue()
+14. To overcome page not found issue we have to put following code in routes->web.php file.
 
-## Security Vulnerabilities
+    Route::get('/{vue_capture?}', function () {
+    return view('welcome');
+    })->where('vue_capture', '[\/\w\.-]\*');
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+        ---> That's it --->
