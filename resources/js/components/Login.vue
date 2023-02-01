@@ -6,7 +6,7 @@
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Login Here!</h1>
                 </div>
-                <form class="user">
+                <form class="user" @submit.prevent="login">
                     <div class="form-group">
                         <input
                             type="email"
@@ -14,6 +14,7 @@
                             id="exampleInputEmail"
                             aria-describedby="emailHelp"
                             placeholder="Enter Email Address..."
+                            v-model="form.email"
                         />
                     </div>
                     <div class="form-group">
@@ -22,6 +23,7 @@
                             class="form-control form-control-user"
                             id="exampleInputPassword"
                             placeholder="Password"
+                            v-model="form.password"
                         />
                     </div>
                     <div class="form-group">
@@ -38,18 +40,18 @@
                             >
                         </div>
                     </div>
-                    <a
-                        href="index.html"
+                    <button
+                        type="submit"
                         class="btn btn-primary btn-user btn-block"
                     >
                         Login
-                    </a>
+                    </button>
                     <hr />
                 </form>
                 <hr />
                 <div class="text-center">
                     <router-link class="small" to="/forgot-password"
-                        >Forgot Password?</router-link
+                        >Forgot Password? Recover it</router-link
                     >
                 </div>
                 <div class="text-center">
@@ -62,7 +64,21 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            form: {
+                email: null,
+                password: null,
+            },
+        };
+    },
+    methods: {
+        login() {
+            alert("it works");
+        },
+    },
+};
 </script>
 
 <style scoped></style>
