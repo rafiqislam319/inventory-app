@@ -51,7 +51,7 @@
                 <hr />
                 <div class="text-center">
                     <router-link class="small" to="/forgot-password"
-                        >Forgot Password?</router-link
+                        >Forgot Password? Recover it</router-link
                     >
                 </div>
                 <div class="text-center">
